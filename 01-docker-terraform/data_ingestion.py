@@ -1,7 +1,8 @@
 import os
 import argparse
+from typing import Any
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine  # type: ignore
 from sqlalchemy.engine.base import Engine
 from dotenv import find_dotenv, load_dotenv
 
@@ -25,13 +26,13 @@ parser.add_argument(
 
 def get_file(filename: str, compress: bool = True) -> pd.DataFrame:
     if compress:
-        return pd.read_csv(filename, compression="gzip")
+        return pd.read_csv(filename, compression="gzip")  # type: ignore
     else:
-        return pd.read_csv(filename)
+        return pd.read_csv(filename)  # type: ignore
 
 
 def transform_col_to_datetime(df: pd.DataFrame, column: str) -> pd.DataFrame:
-    df[column] = pd.to_datetime(df[column])
+    df[column] = pd.to_datetime(df[column])  # type: ignore
     return df
 
 
@@ -51,7 +52,7 @@ def df_to_db(
     )
 
 
-def main(params):
+def main(params: Any) -> None:
     if params.compress:
         output_filename = "output.csv.gz"
         os.system(f"wget {params.url} -O {output_filename}")

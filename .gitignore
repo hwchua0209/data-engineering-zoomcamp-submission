@@ -44,3 +44,16 @@ ny_taxi_postgre_data/
 *.csv
 *.csv.gz
 .DS_Store
+
+# gcp cred keys
+01-docker-terraform/terraform/keys/
+
+# terraform 
+# Local .terraform directories
+**/.terraform/
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl

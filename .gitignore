@@ -24,7 +24,14 @@ share/python-wheels/
 MANIFEST
 
 # Environment file
-.venv/
+.env
+.venv
+.DS_Store
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Text files
 *.txt
@@ -43,7 +50,7 @@ ipython_config.py
 ny_taxi_postgre_data/
 *.csv
 *.csv.gz
-.DS_Store
+
 
 # gcp cred keys
 01-docker-terraform/terraform/keys/
@@ -57,3 +64,11 @@ ny_taxi_postgre_data/
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
+
+# Scratch files
+scratch*
+/mage_data*
+*secrets*.json
+magic-zoomcamp
+*.json
+

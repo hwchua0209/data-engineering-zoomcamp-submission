@@ -1,0 +1,12 @@
+triggers:
+- envs: []
+  last_enabled_at: 2024-02-03 15:24:18.808909
+  name: renewed ronin
+  pipeline_uuid: green_taxi_etl
+  schedule_interval: '@daily'
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2024-02-04 05:00:00
+  status: active
+  variables: {}

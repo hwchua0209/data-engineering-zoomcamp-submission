@@ -2,14 +2,15 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import os
 
-if 'data_exporter' not in globals():
+if "data_exporter" not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
-os.environ['GOOGLE_APPLICATION_CREDENTIAlS'] = '/home/src/keys/my_creds.json'
-bucket_name = 'de-zoomcamp-mage-1'
-project_id = 'plucky-spirit-412403'
-table_name = 'green_taxi'
-root_path = f'{bucket_name}/{table_name}'
+os.environ["GOOGLE_APPLICATION_CREDENTIAlS"] = "/home/src/keys/my_creds.json"
+bucket_name = "de-zoomcamp-mage-1"
+project_id = "plucky-spirit-412403"
+table_name = "green_taxi_partitioned"
+root_path = f"{bucket_name}/{table_name}"
+
 
 @data_exporter
 def export_data(data, *args, **kwargs):
@@ -30,10 +31,8 @@ def export_data(data, *args, **kwargs):
     gcs = pa.fs.GcsFileSystem()
 
     pq.write_to_dataset(
-        table,
-        root_path,
-        partition_cols=['lpep_pickup_date'],
-        filesystem=gcs
+        table=table,
+        root_path=root_path,
+        partition_cols=["lpep_pickup_date"],
+        filesystem=gcs,
     )
-
-

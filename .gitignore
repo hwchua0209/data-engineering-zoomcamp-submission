@@ -51,9 +51,8 @@ ny_taxi_postgre_data/
 *.csv
 *.csv.gz
 
-
 # gcp cred keys
-01-docker-terraform/terraform/keys/
+**/keys/
 
 # terraform 
 # Local .terraform directories
@@ -72,3 +71,31 @@ scratch*
 magic-zoomcamp
 *.json
 
+# data files
+mage_ai/server/data/files/**
+default_repo
+instance_metadata.json
+~/.mage_data
+.log
+.logs/
+.mage_temp_profiles
+.preferences.yaml
+.variables/
+__pycache__/
+docker-compose.override.yml
+logs/
+mage-ai.db
+mage_data/
+secrets/
+
+# test files
+testfiles/
+
+# Docker specific files
+.bash_history
+.jupyter/
+.local/
+.npm/
+.python_history
+mage_ai/frontend/package-lock.json
+docker-compose.override.yml

@@ -87,6 +87,7 @@ logs/
 mage-ai.db
 mage_data/
 secrets/
+taxi_data/
 
 # test files
 testfiles/

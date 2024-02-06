@@ -9,7 +9,7 @@ In this module, we would explore concepts related to data warehouse. The choice 
 - [Partitioning vs Clustering](#Partitioning-vs-Clustering)
 - [BigQuery Best Practice](#BigQuery-Best-Practice)
 - [BigQuery Internals](#BigQuery-Internals)
-
+- [References](#References)
 
 ## OLAP vs OLTP
 There are 2 types of database architectures that help us store and analyze business data, namely OLAP (online analytical processing) and OLTP (online transaction processing). 
@@ -155,6 +155,15 @@ It is generally better to only use partitioning unless the following scenarios a
         - As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.
 
 ## BigQuery Internals
+The internal working is explained in the blog post [BigQuery under the hood](https://cloud.google.com/blog/products/bigquery/bigquery-under-the-hood). 
+
+![|50](https://storage.googleapis.com/gweb-cloudblog-publish/images/bigqueryunderthehoode6uq.max-500x500.PNG)
+
+BigQuery requests are powered by the Dremel query engine. Dremel turns your SQL query into an execution tree. The leaves of the tree it calls ‘slots’, and do the heavy lifting of reading the data from Colossus and doing any computation necessary. The branches of the tree are ‘mixers’, which perform the aggregation. The mixers and slots are all run by Borg, which doles out hardware resources.
+
+BigQuery leverages the ColumnIO columnar storage format and compression algorithm to store data in Colossus in the most optimal way for reading large amounts of structured data.
+
+Besides obvious needs for resource coordination and compute resources, Big Data workloads are often throttled by networking throughput, and it is done via Jupyter networking infrastructure.
 
 ## References
 1. [DTalks-DataEng-Data Warehouse](https://docs.google.com/presentation/d/1a3ZoBAXFk8-EhUsd7rAZd-5p_HpltkzSeujjRGB2TAI/edit#slide=id.g10eebc44ce4_0_0)

@@ -28,11 +28,14 @@ The key differences can be summarize to the following table
 | Database design | Normalized databases for efficiency  | Denormalized databases for analysis |
 | Example | MySQL, PostgreSQL, Oracle Database  | Amazon Redshift, Google BigQuery, Snowflake |
 
-> **NOTE:**
+> [!NOTE] 
 > **Normalized databases** reduce data redundancy and ensure data integrity by dividing data into multiple, connected tables based on specific rules (normal forms).
 
-> **NOTE:**
+> [!NOTE] 
 > **Denormalized databases** improve query performance at the expense of some data redundancy by combining data from multiple tables into a single table or flattens data structures.
+
+[Back to top](#Table-of-contents)
+
 ## Data Warehouse
 Data warehouse uses a ETL (Extract-Transform-Load) process unlike datalake which uses a ELT (Extract-Load-Transform) process. 
 
@@ -56,7 +59,7 @@ OPTIONS (
 ```
 
 You may perform SQL query on the external table.
-> **NOTE:** 
+> [!NOTE] 
 > BQ is unable to determine the number of rows for external table.
 
 To convert external table to internal table, we could execute the following sql statement.
@@ -65,6 +68,9 @@ To convert external table to internal table, we could execute the following sql 
 CREATE OR REPLACE TABLE taxi-rides-ny.nytaxi.yellow_tripdata_non_partitoned AS
 SELECT * FROM taxi-rides-ny.nytaxi.external_yellow_tripdata;
 ```
+
+[Back to top](#Table-of-contents)
+
 ## Partitioning vs Clustering
 ### Partitions
 Partitioning table improve query performance and control costs by reducing the number of bytes read by a query. If a query uses a qualifying filter on the value of the partitioning column, BigQuery can scan the partitions that match the filter and skip the remaining partitions. 
@@ -131,6 +137,8 @@ It is generally better to only use partitioning unless the following scenarios a
 - Partitioning results in a large number of partitions beyond the limits on partitioned tables (4000 partitions is the limit)
 - Partitioning results in your mutation operations modifying the majority of partitions in the table frequently (for example, every few minutes)
 
+[Back to top](#Table-of-contents)
+
 ## BigQuery Best Practice
 - **Cost Reduction**
     - Avoid SELECT *
@@ -154,6 +162,8 @@ It is generally better to only use partitioning unless the following scenarios a
     - Optimize join patterns
         - As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.
 
+[Back to top](#Table-of-contents)
+
 ## BigQuery Internals
 The internal working is explained in the blog post [BigQuery under the hood](https://cloud.google.com/blog/products/bigquery/bigquery-under-the-hood). 
 
@@ -165,7 +175,11 @@ BigQuery leverages the ColumnIO columnar storage format and compression algorith
 
 Besides obvious needs for resource coordination and compute resources, Big Data workloads are often throttled by networking throughput, and it is done via Jupyter networking infrastructure.
 
+[Back to top](#Table-of-contents)
+
 ## References
 1. [DTalks-DataEng-Data Warehouse](https://docs.google.com/presentation/d/1a3ZoBAXFk8-EhUsd7rAZd-5p_HpltkzSeujjRGB2TAI/edit#slide=id.g10eebc44ce4_0_0)
 2. [What’s the Difference Between OLAP and OLTP?](https://aws.amazon.com/compare/the-difference-between-olap-and-oltp/)
 3. [Introduction to partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
+
+[Back to top](#Table-of-contents)

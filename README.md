@@ -7,7 +7,7 @@ This repository showcases my work for the Data Engineering Zoomcamp 2024 program
 | :---: | ------------- | :---: |
 | 1 | [Docker and Terraform](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/01-docker-terraform)| ✅ |
 | 2 | [Workflow Orchestration (Mage)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/02-workflow-orchestration)  | ✅ |
-| 3 | [Data Warehouse (Google BigQuery)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/03-data-warehouse)  |  |
+| 3 | [Data Warehouse (Google BigQuery)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/03-data-warehouse)  | ✅ |
 | 4 | Analytics Engineering (dbt)  |  |
 | 5 | Batch Processing (PySpark)  |  |
 | 6 | Stream Processing (Kafka)  |  |

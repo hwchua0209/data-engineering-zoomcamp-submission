@@ -100,3 +100,6 @@ testfiles/
 .python_history
 mage_ai/frontend/package-lock.json
 docker-compose.override.yml
+
+# Duckdb specific files
+*.duckdb*

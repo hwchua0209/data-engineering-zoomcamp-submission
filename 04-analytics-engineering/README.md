@@ -8,3 +8,5 @@ All dbt codes for HW4 can be found in `taxi_rides_ny` folder under the folder `m
 
 # Screenshot of Dashboard
 A screenshot of the dashboard for HW4 Qustion 4 is as follows. 
+
+![](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/blob/main/04-analytics-engineering/dashboard/DE-Zoomcamp_HW4_screenshot.png)

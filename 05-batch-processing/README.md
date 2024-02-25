@@ -8,6 +8,7 @@
 - [Spark Core](#spark-core)
 - [Spark Submit](#spark-submit)
 - [Internals of Spark](#internals-of-spark)
+- [Spark Memory Management](#spark-memory-management)
 
 ## Introduction to Spark
 Spark is a an open-source, distributed computation engine that:
@@ -108,6 +109,9 @@ To run on a cluster, `SparkContext` connect to several types of cluster managers
 | Kubernetes | k8s://HOST:PORT or k8s://https://HOST:PORT | Use k8s://HOST:PORT for Kubernetes
 | local | local or local[k] or local[k, F] | k = number of cores, which translate to number of workers, F = number of attempts it should run when failed
 
+> [!NOTE] 
+> In local mode, all driver and executor run inside of a single JVM. Only setting driver behaviour matters.
+
 Refer this [page](https://sparkbyexamples.com/spark/spark-submit-command/) for more info on spark-submit.
 
 [Back to top](#table-of-contents)
@@ -179,6 +183,31 @@ Broadcast Hash join uses `Hash Join Algorithm` and `broadcast` data exchange. Th
 Broadcast Hash join is useful if one of the table is able to fit into executor memory. The default broadcast size is 10mb. Broadcast Hash is the preferred way of joining tables as shuffling is not required. One disadvantage is that it doeese not support FULL OUTER JOIN.
 
 [Back to top](#table-of-contents)
+## Spark Memory Management
+Spark advantage over MapReduce is it's ability to store data reliably in-memory and this makes repeatedly accessing it (ie. for iterative algorithms) incomparably faster.
+
+Spark memory management model is summarized in the following figure.
+
+<img src='https://community.cloudera.com/t5/image/serverpage/image-id/31458i4CD22C3034275157/image-size/large?v=v2&px=999' width='500'>
+
+- Reserved Memory 
+    - Memory reserved for the system and is used to store Spark's internal objects. Typically around 300mb.
+- User Memory 
+    - Memory used to store user-defined data structures, Spark internal metadata, any UDFs created by the user, and the data needed for RDD conversion operations, such as RDD dependency information, etc.
+    - This memory segment is not managed by Spark. Spark will not be aware of or maintain this memory segment.
+    - Formula :```(Java Heap — Reserved Memory) * (1.0—Spark.memory.fraction)```
+- Spark Memory (Unified Memory)
+    - Memory pool managed by Apache Spark.
+    - Responsible for storing intermediate states while doing task execution like joins or storing broadcast variables. All the cached or persistent data will be stored in this segment, specifically in the storage memory of this segment.
+    - Formula :```(Java Heap — Reserved Memory) * spark.memory.fraction```
+    - Spark tasks operate in two main memory regions:
+        - Execution: Used for shuffles, joins, sorts, and aggregations.
+        - Storage: used to cache partitions of data, cached data, broadcast variables, etc..
+    - The boundary between them is set by spark.memory.storageFraction parameter, which defaults to 0.5 or 50%.
+
+
+[Back to top](#table-of-contents)
+
 ## Reference
 1. [PySpark Overview](https://spark.apache.org/docs/latest/api/python/index.html)
 2. [RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html#resilient-distributed-datasets-rdds)
@@ -187,5 +216,6 @@ Broadcast Hash join is useful if one of the table is able to fit into executor m
 5. [Spark Transformation and Action: A Deep Dive](https://medium.com/codex/spark-transformation-and-action-a-deep-dive-f351bce88086)
 6. [The Internals of Spark SQL](https://books.japila.pl/spark-sql-internals/overview/)
 7. [Different Types of Spark Join Strategies](https://medium.com/@ongchengjie/different-types-of-spark-join-strategies-997671fbf6b0)
+8. [Spark Memory Management ](https://community.cloudera.com/t5/Community-Articles/Spark-Memory-Management/ta-p/317794)
 
 [Back to top](#table-of-contents)

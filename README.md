@@ -10,7 +10,7 @@ This repository showcases my work for the Data Engineering Zoomcamp 2024 program
 | 3 | [Data Warehouse (Google BigQuery)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/03-data-warehouse)  | ✅ |
 | Workshop 1 | [Data Ingestion (dlt)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/workshop1_data_ingestion_with_dlt)  | ✅ |
 | 4 | [Analytics Engineering (dbt)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/04-analytics-engineering)  | ✅ |
-| 5 | Batch Processing (PySpark)  |  |
+| 5 | [Batch Processing (PySpark)](https://github.com/hwchua0209/data-engineering-zoomcamp-submission/tree/main/05-batch-processing)  | ✅ |
 | 6 | Stream Processing (Kafka)  |  |
 | 7 | Final Project  |  |
 

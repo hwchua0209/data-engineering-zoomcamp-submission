@@ -1,4 +1,9 @@
 # Data Engineering Zoomcamp 2024 Submission
+![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=flat-square&logo=google-cloud&logoColor=white)
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=flat-square&logo=terraform&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white)
+![Apache Spark](https://img.shields.io/badge/Apache_Spark-FFFFFF?style=flat-square&logo=apachespark&logoColor=#E35A16)
+![DBT](https://img.shields.io/badge/dbt-FF694B?style=flat-square&logo=dbt&logoColor=white)
 
 This repository showcases my work for the Data Engineering Zoomcamp 2024 program. Dive into my completed submissions for various modules, including Docker & Terraform, Workflow Orchestration, and more! Explore the code, see my progress, and get a glimpse into my learning journey.
 
